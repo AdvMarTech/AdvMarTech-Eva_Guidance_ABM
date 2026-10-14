@@ -1,0 +1,92 @@
+/*
+ * Seafarer deployment using predefined location groups.
+ *
+ * Slider settings:
+ *   0: No active seafarers.
+ *   1: Deploy the first group of up to 15 seafarers.
+ *   2: Deploy the first two groups of up to 30 seafarers.
+ *   3: Deploy all available seafarers using three location groups,
+ *      intended for a population of up to 45 seafarers.
+ *
+ * AnyLogic model dependencies:
+ *   guides: seafarer agent population.
+ *   node63: holding location for inactive seafarers.
+ *   guides1to15: deployment locations for indices 0–14.
+ *   guides16to30: deployment locations for indices 15–29.
+ *   guides31to45: deployment locations for indices 30–44.
+ *   slider: deployment configuration control.
+ *   text14: interface text element.
+ *
+ * Each location provides its associated ship level.
+ * Iswork records whether a seafarer is active.
+ *
+ * This snippet preserves the original execution logic.
+ */
+
+int i = 0;
+
+// Move all seafarers to the holding location and mark them inactive.
+for (i = 0; i < guides.size(); i++) {
+    guides.get(i).setLocation(node63);
+    guides.get(i).Iswork = false;
+}
+
+// Apply the deployment configuration selected by the slider.
+if (slider.getValue() == 0) {
+
+    text14.setColor(red);
+
+} else if (slider.getValue() == 1) {
+
+    for (i = 0; i < guides.size(); i++) {
+        if (i < 15) {
+            guides.get(i).setLocation(guides1to15.get(i));
+            guides.get(i).setLevel(guides1to15.get(i).getLevel());
+            guides.get(i).Iswork = true;
+        }
+    }
+
+} else if (slider.getValue() == 2) {
+
+    for (i = 0; i < guides.size(); i++) {
+        if (i < 15) {
+            guides.get(i).setLocation(guides1to15.get(i));
+            guides.get(i).setLevel(guides1to15.get(i).getLevel());
+            guides.get(i).Iswork = true;
+
+        } else if (i >= 15 && i < 30) {
+            guides.get(i).setLocation(guides16to30.get(i - 15));
+            guides.get(i).setLevel(
+                guides16to30.get(i - 15).getLevel()
+            );
+            guides.get(i).Iswork = true;
+        }
+    }
+
+} else if (slider.getValue() == 3) {
+
+    for (i = 0; i < guides.size(); i++) {
+        if (i < 15) {
+            guides.get(i).setLocation(guides1to15.get(i));
+            guides.get(i).setLevel(guides1to15.get(i).getLevel());
+            guides.get(i).Iswork = true;
+
+        } else if (i >= 15 && i < 30) {
+            guides.get(i).setLocation(guides16to30.get(i - 15));
+            guides.get(i).setLevel(
+                guides16to30.get(i - 15).getLevel()
+            );
+            guides.get(i).Iswork = true;
+
+        } else {
+            guides.get(i).setLocation(guides31to45.get(i - 30));
+            guides.get(i).setLevel(
+                guides31to45.get(i - 30).getLevel()
+            );
+            guides.get(i).Iswork = true;
+        }
+    }
+}
+
+// Original interface update: applied after every configuration.
+text14.setColor(blue);
