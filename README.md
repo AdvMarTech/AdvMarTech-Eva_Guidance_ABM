@@ -70,16 +70,13 @@ agent statecharts, and evacuation process logic.
 
 ### Main Model Workspace
 
-![Main model workspace](<img width="1596" height="799" alt="cfdb86a6-181c-4915-8e17-d7f8f610930c" src="https://github.com/user-attachments/assets/fca18e8b-9016-4b3d-84de-1063def20b79" />
-)
+<img width="1596" height="799" alt="cfdb86a6-181c-4915-8e17-d7f8f610930c" src="https://github.com/user-attachments/assets/fca18e8b-9016-4b3d-84de-1063def20b79" />
 
 
 ### Passenger Agent and Statechart
 
-![Passenger agent and statechart](<img width="849" height="635" alt="4b2c65f1-6ac5-49a5-812b-635d052065af" src="https://github.com/user-attachments/assets/073e8a4d-fff9-4652-98df-ec3c9c3d4bb2" />
-)
+<img width="849" height="635" alt="4b2c65f1-6ac5-49a5-812b-635d052065af" src="https://github.com/user-attachments/assets/073e8a4d-fff9-4652-98df-ec3c9c3d4bb2" />
 
 ### Evacuation Process Logic
 
-![Evacuation process flowchart](<img width="771" height="1126" alt="643f275f-608f-4dc9-9392-77566d6c98e7" src="https://github.com/user-attachments/assets/5c179822-074b-4b1e-bf8b-72791b35e9a4" />
-)
+<img width="771" height="1126" alt="643f275f-608f-4dc9-9392-77566d6c98e7" src="https://github.com/user-attachments/assets/5c179822-074b-4b1e-bf8b-72791b35e9a4" />
