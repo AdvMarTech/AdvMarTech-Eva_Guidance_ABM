@@ -1,0 +1,115 @@
+/*
+ * Passenger emotional-update dispatch.
+ *
+ * AnyLogic context:
+ *   people: passenger agent population.
+ *   myArray: preallocated list storing passenger emotional values.
+ *   Immunodeficiencyrate: parameter passed to the response check.
+ *
+ * Update modes returned by checkemotionupdateway():
+ *   1: Outside both seafarer and broadcast coverage.
+ *   2: Within seafarer coverage only.
+ *   3: Within broadcast coverage only.
+ *   4: Within both coverage areas.
+ *
+ * The numerical update equations are implemented separately in
+ * updateemotion1(), updateemotion2(), updateemotion3(),
+ * and updateemotion4().
+ *
+ * This snippet preserves the original control flow and function
+ * invocation order. It is not a standalone Java application.
+ */
+
+int i = 0;
+double previousEmotion = 0.0;
+
+for (i = 0; i < people.size(); i++) {
+
+    // Immune-state exclusion is not enabled in this snippet.
+
+    if (checkemotionupdateway(people.get(i)) == 1) {
+
+        // Neither intervention covers the passenger.
+        previousEmotion = people.get(i).emotionvalue;
+        people.get(i).emotionvalue =
+            updateemotion1(previousEmotion, people.get(i));
+
+        myArray.set(i, people.get(i).emotionvalue);
+
+    } else if (checkemotionupdateway(people.get(i)) == 2) {
+
+        // Seafarer coverage only.
+        if (isimmunodeficiency(Immunodeficiencyrate) == false) {
+
+            previousEmotion = people.get(i).emotionvalue;
+            people.get(i).emotionvalue =
+                updateemotion2(previousEmotion, people.get(i));
+
+            myArray.set(i, people.get(i).emotionvalue);
+
+        } else {
+
+            previousEmotion = people.get(i).emotionvalue;
+            people.get(i).emotionvalue =
+                updateemotion1(previousEmotion, people.get(i));
+
+            myArray.set(i, people.get(i).emotionvalue);
+        }
+
+    } else if (checkemotionupdateway(people.get(i)) == 3) {
+
+        // Broadcast coverage only.
+        if (isimmunodeficiency(Immunodeficiencyrate) == false) {
+
+            previousEmotion = people.get(i).emotionvalue;
+            people.get(i).emotionvalue =
+                updateemotion3(previousEmotion, people.get(i));
+
+            myArray.set(i, people.get(i).emotionvalue);
+
+        } else {
+
+            previousEmotion = people.get(i).emotionvalue;
+            people.get(i).emotionvalue =
+                updateemotion1(previousEmotion, people.get(i));
+
+            myArray.set(i, people.get(i).emotionvalue);
+        }
+
+    } else if (checkemotionupdateway(people.get(i)) == 4) {
+
+        // Both interventions cover the passenger.
+        // Repeated checks are retained in their original order.
+        if ((isimmunodeficiency(Immunodeficiencyrate) == false)
+                && (isimmunodeficiency(Immunodeficiencyrate) == false)) {
+
+            previousEmotion = people.get(i).emotionvalue;
+            people.get(i).emotionvalue =
+                updateemotion4(previousEmotion, people.get(i));
+
+            myArray.set(i, people.get(i).emotionvalue);
+
+        } else if ((isimmunodeficiency(Immunodeficiencyrate) == true)
+                && (isimmunodeficiency(Immunodeficiencyrate) == false)) {
+
+            previousEmotion = people.get(i).emotionvalue;
+            people.get(i).emotionvalue =
+                updateemotion2(previousEmotion, people.get(i));
+
+            myArray.set(i, people.get(i).emotionvalue);
+
+        } else if ((isimmunodeficiency(Immunodeficiencyrate) == false)
+                && (isimmunodeficiency(Immunodeficiencyrate) == true)) {
+
+            previousEmotion = people.get(i).emotionvalue;
+            people.get(i).emotionvalue =
+                updateemotion3(previousEmotion, people.get(i));
+
+            myArray.set(i, people.get(i).emotionvalue);
+
+        } else {
+
+            // No update to emotionvalue or myArray in this branch.
+        }
+    }
+}
