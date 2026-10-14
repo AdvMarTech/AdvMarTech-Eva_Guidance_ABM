@@ -43,7 +43,6 @@ The planned release includes selected Java code from the AnyLogic implementation
 
 - Passenger initialisation and attribute assignment.
 - Emotional-intensity and desired-speed updates.
-- Density and flow monitoring.
 - Activation and updating of local guidance.
 - Repeated simulation runs and output calculation.
 
@@ -53,15 +52,8 @@ The complete AnyLogic model is not currently provided. Repository contents and f
 
 The 1 s intervals specified above apply to the emotion and guidance procedures and should not be interpreted as a fixed numerical integration step for all pedestrian movement calculations.
 
-The random seeds used in the reported experiments were not retained. Consequently, the individual simulation runs cannot be reproduced exactly from the documented settings alone. Future runs should record their seeds alongside scenario settings and outputs.
-
 This repository is currently under preparation and does not yet provide a complete executable reproduction package.
 
-## Scope
-
-The simulations examine evacuation efficiency and local congestion under the modelled conditions. They use a static ship environment and assume effective guidance communication and passenger compliance.
-
-The results do not establish safety or system reliability under evolving hazards, communication failures, or seafarer unavailability.
 
 ## Citation
 
