@@ -44,7 +44,6 @@ The planned release includes selected Java code from the AnyLogic implementation
 - Passenger initialisation and attribute assignment.
 - Emotional-intensity and desired-speed updates.
 - Activation and updating of local guidance.
-- Repeated simulation runs and output calculation.
 
 The complete AnyLogic model is not currently provided. Repository contents and file-specific instructions will be updated as materials are uploaded.
 
