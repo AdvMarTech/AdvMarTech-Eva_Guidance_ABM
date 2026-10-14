@@ -1,0 +1,57 @@
+/**
+ * Calculates passenger walking speed from age and sex
+ * using piecewise linear relationships.
+ *
+ * Inputs:
+ *   sex: Sex.FEMALE or Sex.MALE
+ *   age: passenger age in years, age >= 2
+ *
+ * Output:
+ *   Walking speed in metres per second (m/s).
+ *
+ * Integration:
+ *   Sex refers to the option list defined in the AnyLogic model.
+ *   When used as an AnyLogic function, configure the return type
+ *   as double and add sex and age as arguments.
+ *
+ * This function does not sample passenger age or sex,
+ * generate OCEAN traits, or assign an upper speed bound.
+ */
+public double calculateWalkingSpeed(Sex sex, double age) {
+
+    if (sex == null || !Double.isFinite(age) || age < 2.0) {
+        throw new IllegalArgumentException(
+            "A valid sex and a finite age of at least 2 years are required."
+        );
+    }
+
+    if (sex == Sex.FEMALE) {
+        if (age < 8.3) {
+            return 0.06 * age + 0.50;
+        } else if (age < 13.3) {
+            return 0.04 * age + 0.67;
+        } else if (age < 22.25) {
+            return 0.02 * age + 0.94;
+        } else if (age < 37.5) {
+            return -0.018 * age + 1.78;
+        } else {
+            return -0.01 * age + 1.45;
+        }
+    }
+
+    if (sex == Sex.MALE) {
+        if (age < 5.0) {
+            return 0.16 * age + 0.30;
+        } else if (age < 12.5) {
+            return 0.06 * age + 0.80;
+        } else if (age < 18.8) {
+            return 0.008 * age + 1.45;
+        } else if (age < 39.2) {
+            return -0.01 * age + 1.78;
+        } else {
+            return -0.009 * age + 1.75;
+        }
+    }
+
+    throw new IllegalArgumentException("Unsupported sex category.");
+}
