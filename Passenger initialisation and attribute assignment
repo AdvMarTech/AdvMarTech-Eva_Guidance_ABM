@@ -14,9 +14,6 @@
  *   When used as an AnyLogic function, configure the return type
  *   as double and add sex and age as arguments.
  *
- * This function does not sample passenger age or sex,
- * generate OCEAN traits, or assign an upper speed bound.
- */
 public double calculateWalkingSpeed(Sex sex, double age) {
 
     if (sex == null || !Double.isFinite(age) || age < 2.0) {
