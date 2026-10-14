@@ -62,3 +62,26 @@ If you use this work in your research, please cite the associated manuscript. Fu
 ## Questions and Feedback
 
 Please open an Issue in this repository for questions about the implementation, parameter settings, or documentation.
+
+## Model Implementation Screenshots
+
+The following screenshots show selected parts of the model
+implementation in AnyLogic, including the main modelling workspace,
+agent statecharts, and evacuation process logic.
+
+### Main Model Workspace
+
+![Main model workspace](images/model_workspace.png)<img width="1690" height="845" alt="70b95c3f-7ff1-4bde-a6b4-a9b4926a8733" src="https://github.com/user-attachments/assets/4116053b-5c71-4349-8038-5e2509d92024" />
+
+
+### Passenger Agent and Statechart
+
+![Passenger agent and statechart](images/passenger_agent.png)
+
+### Seafarer Guidance Logic
+
+![Seafarer guidance logic](images/seafarer_logic.png)
+
+### Evacuation Process Flowchart
+
+![Evacuation process flowchart](images/evacuation_flowchart.png)
